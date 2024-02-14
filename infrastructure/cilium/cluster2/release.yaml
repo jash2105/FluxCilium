@@ -1,0 +1,20 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  values:
+    cluster:
+      id: 2
+      name: cluster2
+    k8sServiceHost: 10.69.59.202
+    clustermesh:
+      config:
+        clusters:
+        - ips:
+          - 10.69.59.201
+          name: cluster1
+          port: 32379
+        enabled: true
